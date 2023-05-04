@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from rest_framework import viewsets, status
+from rest_framework import viewsets
 from .models import Movie, Rating
-from .serializers import MovieSerializer, RatingSerializer, UserSerializer
+from .serializers import MovieSerializer, RatingSerializer
 
 
 class MovieViewSet(viewsets.ModelViewSet):
