@@ -7,7 +7,7 @@ from .views import MovieViewSet, RatingViewSet
 router = routers.DefaultRouter()
 router.register('movies', MovieViewSet)
 router.register('ratings', RatingViewSet)
-router = routers.DefaultRouter()
+
 
 urlpatterns = [
     path('', include(router.urls)),
