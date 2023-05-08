@@ -18,10 +18,16 @@ class MovieViewSet(viewsets.ModelViewSet):
             stars = request.data['stars']
             #user = request.user
             user = User.objects.get(id=1)
-            print('user', user)
+            print('user', user.username)
 
-            response = {'message': 'its working'}
-            return Response(response, status=status.HTTP_200_OK)
+            try:
+                rating = Rating.objects.get(user=user.id, movie=movie.id)
+                rating.stars = stars
+                rating.save()
+                response = {'message': 'its working'}
+                return Response(response, status=status.HTTP_200_OK)
+            except:
+                rating = Rating.objects.create(user=user, movie=movie, stars=stars)
         else:
             response = {'message': 'provide stars'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
