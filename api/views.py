@@ -24,10 +24,16 @@ class MovieViewSet(viewsets.ModelViewSet):
                 rating = Rating.objects.get(user=user.id, movie=movie.id)
                 rating.stars = stars
                 rating.save()
-                response = {'message': 'its working'}
+                serializer = RatingSerializer(rating, many=False)
+                response = {'message': 'Rating updated', 'result': serializer.data}
                 return Response(response, status=status.HTTP_200_OK)
             except:
                 rating = Rating.objects.create(user=user, movie=movie, stars=stars)
+                serializer = RatingSerializer(rating, many=False)
+                response = {'message': 'Rating created', 'result': serializer.data}
+                return Response(response, status=status.HTTP_200_OK)
+
+                
         else:
             response = {'message': 'provide stars'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
