@@ -26,7 +26,12 @@ class Movie(models.Model):
 class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stars = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    stars = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ]
+    )
 
     class Meta:
         unique_together = (('user', 'movie'),)
