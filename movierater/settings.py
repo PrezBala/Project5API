@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,14 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%bb(b!)v^7hp@je()d+8@4hogs3%8=-e)su&i4p5m4u7i9k97a'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = [
     '8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com',
 ]
+
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
 
@@ -58,8 +60,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://8080-prezbala-project5fe-zq1mfbzqyqn.ws-eu96b.gitpod.io",
+    "https://3000-prezbala-project5fe-nwt8eqsjv4.us2.codeanyapp.com",
+    'http://localhost:3000'
 ]
+
 
 ROOT_URLCONF = 'movierater.urls'
 
