@@ -10,11 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
-import dj_database_url
 from pathlib import Path
-if os.path.isfile('env.py'):
-    import env  # noqa: F401
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,22 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-%bb(b!)v^7hp@je()d+8@4hogs3%8=-e)su&i4p5m4u7i9k97a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = True
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+ALLOWED_HOSTS = ['8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
 
-ALLOWED_HOSTS = [
-    '8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com', '<your_app_name>.herokuapp.com', 'localhost'
-]
-
- JWT_AUTH_COOKIE = 'my-app-auth'
- JWT_AUTH_REFRESH_COOKE = 'my-refresh-token'
- JWT_AUTH_SAMESITE = 'None'
-
-CSRF_TRUSTED_ORIGINS = ['https://8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-prezbala-project5api-nox8rqq7d9l.ws-eu97.gitpod.io']
 
 # Application definition
 
@@ -50,18 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dj_rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
     'api',
     'corsheaders',
 ]
 
-SITE_ID = 1
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -69,14 +55,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
- if 'CLIENT_ORIGIN' in os.environ:
-     CORS_ALLOWED_ORIGINS = [
-         os.environ.get('CLIENT_ORIGIN')
-     ]
- else:
-     CORS_ALLOWED_ORIGIN_REGEXES = [
-         r"^https://.*\.gitpod\.io$",
-     ]
+CORS_ALLOWED_ORIGINS = [
+    "https://8080-prezbala-project5fe-zq1mfbzqyqn.ws-eu96b.gitpod.io",
+]
 
 ROOT_URLCONF = 'movierater.urls'
 
@@ -102,20 +83,12 @@ WSGI_APPLICATION = 'movierater.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db,sqlite3')
-
-if 'DEV' in os.environ:
-    DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': BASE_DIR / 'db.sqlite3',
-         }
-     }
-else:
-    DATABASES = {
-         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-     }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -159,7 +132,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
