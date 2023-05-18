@@ -107,10 +107,6 @@ else:
          'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
      }
 
-print(os.environ.get("DATABASE_URL"))
-print("SECRET_KEY:", os.environ.get("SECRET_KEY"))
-print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
