@@ -106,6 +106,8 @@ else:
     DATABASES = {
          'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
      }
+    print('connected')
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
