@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://8080-prezbala-project5fe-zq1mfbzqyqn.ws-eu96b.gitpod.io",
+    "https://8080-prezbala-project5fe-zq1mfbzqyqn.ws-eu96b.gitpod.io", "https://3000-prezbala-project5fe-nwt8eqsjv4.us2.codeanyapp.com"
 ]
 
 ROOT_URLCONF = 'movierater.urls'
