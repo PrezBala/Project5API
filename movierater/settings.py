@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
+import dj_database_url
 from pathlib import Path
-from dj_database_url import parse as dburl
+if os.path.isfile('env.py'):
+    import env  # noqa: F401
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,15 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = 'DEVELOPMENT' in os.environ
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     '8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com',
 ]
-
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
 
@@ -91,9 +95,21 @@ WSGI_APPLICATION = 'movierater.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db,sqlite3')
 
-DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-}
+if 'DEV' in os.environ:
+    DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+else:
+    DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
+
+print(os.environ.get("DATABASE_URL"))
+print("SECRET_KEY:", os.environ.get("SECRET_KEY"))
+print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
