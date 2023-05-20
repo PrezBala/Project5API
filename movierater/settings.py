@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-prezbala-project5api-nox8rqq7d9l.ws-eu97.gitpod.io']
+
+CSRF_TRUSTED_ORIGINS = ['8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com']
 
 # Application definition
 
@@ -56,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://8000-prezbala-project5api-nzyoyjptc3.us2.codeanyapp.com"
+    "https://3000-prezbala-project5fe-nwt8eqsjv4.us2.codeanyapp.com"
 ]
 
 ROOT_URLCONF = 'movierater.urls'
