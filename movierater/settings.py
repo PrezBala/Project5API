@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-%bb(b!)v^7hp@je()d+8@4hogs3%8=-e)su&i4p5m4u7i9k97a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-prezbala-project5api-onll2lfd0l.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com']
 
 
-CSRF_TRUSTED_ORIGINS = ['8000-prezbala-project5api-onll2lfd0l.us2.codeanyapp.com']
+CSRF_TRUSTED_ORIGINS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com']
 
 # Application definition
 
