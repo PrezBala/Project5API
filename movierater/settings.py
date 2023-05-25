@@ -79,10 +79,13 @@ ROOT_URLCONF = 'movierater.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 TEMPLATES = [
-    ...
-    'DIRS': [TEMPLATES_DIR], 
-    ...
+    {
+        ...
+        'DIRS': [TEMPLATES_DIR],
+        ...
+    }
 ]
+
 
 WSGI_APPLICATION = 'movierater.wsgi.application'
 
