@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.authentication import TokenAuthentication
@@ -6,6 +6,22 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer, UserSerializer
+from .permissions import IsAdminUser
+
+
+class IsAdminUser(permissions.BasePermission):
+    """
+    Custom permission to only allow admins to edit or delete a movie.
+    """
+    def has_permission(self, request, view):
+        # Write permissions are only allowed to admin users.
+        return bool(request.user and request.user.is_staff)
+
+
+class MovieViewSet(viewsets.ModelViewSet):
+    ...
+    permission_classes = (IsAuthenticated, IsAdminUser,)
+    ...
 
 
 class UserViewSet(viewsets.ModelViewSet):
