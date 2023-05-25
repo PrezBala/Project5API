@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status, permissions
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.authentication import TokenAuthentication
@@ -6,15 +6,6 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer, UserSerializer
-
-
-class IsAdminUser(permissions.BasePermission):
-    """
-    Custom permission to only allow admins to edit or delete a movie.
-    """
-    def has_permission(self, request, view):
-        # Write permissions are only allowed to admin users.
-        return bool(request.user and request.user.is_staff)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -27,11 +18,12 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (IsAuthenticated, IsAdminUser,)
+    permission_classes = (IsAuthenticated,)
 
     @action(detail=True, methods=['POST'])
     def rate_movie(self, request, pk=None):
         if 'stars' in request.data:
+
             movie = Movie.objects.get(id=pk)
             stars = request.data['stars']
             user = request.user
@@ -55,7 +47,12 @@ class MovieViewSet(viewsets.ModelViewSet):
                     stars=stars
                 )
                 serializer = RatingSerializer(rating, many=False)
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                rating = Rating.objects.create(
+                    user=user,
+                    movie=movie,
+                    stars=stars
+                )
+                return Response(response, status=status.HTTP_200_OK)
 
         else:
             response = {'message': 'provide stars'}
