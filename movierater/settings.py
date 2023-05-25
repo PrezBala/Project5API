@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', 'project-5-movierater.herokuapp.com', 'localhost']
 
@@ -77,20 +77,11 @@ CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'movierater.urls'
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+    ...
+    'DIRS': [TEMPLATES_DIR], 
+    ...
 ]
 
 WSGI_APPLICATION = 'movierater.wsgi.application'
