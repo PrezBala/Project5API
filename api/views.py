@@ -67,8 +67,8 @@ class RatingViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         response = {'message': 'You cant update rating like that'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        return Response(response, status=status.HTTP_403_FORBIDDEN)
 
     def create(self, request, *args, **kwargs):
         response = {'message': 'You cant create rating like that'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        return Response(response, status=status.HTTP_403_FORBIDDEN)
