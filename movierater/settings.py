@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', 'project-5-movierater.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com']
+CSRF_TRUSTED_ORIGINS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', '3001-prezbala-project5fe-ncmp7oo1ep.us2.codeanyapp.com']
 
 # Application definition
 

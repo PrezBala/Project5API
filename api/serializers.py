@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password')
+        fields = ('id', 'username', 'password', 'is_staff')
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
     def create(self, validated_data):
@@ -20,7 +20,6 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('id', 'title', 'description', 'no_of_ratings', 'avg_rating')
-
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
