@@ -10,5 +10,6 @@ router.register('ratings', RatingViewSet)
 router.register('admin', AdminViewSet) 
 
 urlpatterns = [
+    path('auth/', UserViewSet.as_view({'post': 'login'})),  # Add this line
     path('', include(router.urls)),
 ]
