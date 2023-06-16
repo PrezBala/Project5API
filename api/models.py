@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Movie(models.Model):
     title = models.CharField(max_length=32)
     description = models.TextField(max_length=360)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def no_of_ratings(self):
         ratings = Rating.objects.filter(movie=self)

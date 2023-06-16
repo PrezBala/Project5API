@@ -9,6 +9,8 @@ from django.contrib.auth import authenticate
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer, UserSerializer
 from .permissions import IsAdminUser
+from rest_framework.authtoken.views import ObtainAuthToken
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -25,12 +27,24 @@ class UserViewSet(viewsets.ModelViewSet):
             token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'token': token.key,
+                'user_id': user.id,
                 'is_staff': user.is_staff,
             }, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Wrong Credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
-
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'is_staff': user.is_staff
+        })
 
 
 class MovieViewSet(viewsets.ModelViewSet):
@@ -38,6 +52,17 @@ class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
     authentication_classes = (TokenAuthentication, )
     permission_classes = (IsAuthenticated,)
+
+    def create(self, request, *args, **kwargs):
+        # get mutable version of request data
+        data = request.data.dict() if type(request.data) is not dict else request.data
+        # add the creator field
+        data['creator'] = request.user.id
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     @action(detail=True, methods=['POST'])
     def rate_movie(self, request, pk=None):

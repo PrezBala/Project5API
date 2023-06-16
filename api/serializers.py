@@ -2,7 +2,8 @@ from rest_framework import serializers
 from .models import Movie, Rating
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.response import Response
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,9 +20,23 @@ class UserSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ('id', 'title', 'description', 'no_of_ratings', 'avg_rating')
+        fields = ('id', 'title', 'description', 'no_of_ratings', 'avg_rating', 'creator')
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ('id', 'stars', 'user', 'movie')
+
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'is_staff': user.is_staff,
+            'username': user.username
+        })
