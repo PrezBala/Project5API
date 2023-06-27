@@ -1,7 +1,13 @@
 from django.urls import path
 from rest_framework import routers
 from django.conf.urls import include
-from .views import MovieViewSet, RatingViewSet, UserViewSet, AdminViewSet, CustomAuthToken
+from .views import (
+    MovieViewSet,
+    RatingViewSet,
+    UserViewSet,
+    AdminViewSet,
+    CustomAuthToken,
+)
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)

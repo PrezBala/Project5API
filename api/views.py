@@ -12,7 +12,6 @@ from .permissions import IsAdminUser
 from rest_framework.authtoken.views import ObtainAuthToken
 
 
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -31,7 +30,11 @@ class UserViewSet(viewsets.ModelViewSet):
                 'is_staff': user.is_staff,
             }, status=status.HTTP_200_OK)
         else:
-            return Response({'error': 'Wrong Credentials'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {'error': 'Wrong Credentials'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
 
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
@@ -54,15 +57,19 @@ class MovieViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def create(self, request, *args, **kwargs):
-        # get mutable version of request data
-        data = request.data.dict() if type(request.data) is not dict else request.data
-        # add the creator field
+        data = (request.data.dict() 
+                if type(request.data) is not dict
+                else request.data)
         data['creator'] = request.user.id
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            serializer.data,
+            status=status.HTTP_201_CREATED,
+            headers=headers
+        )
 
     @action(detail=True, methods=['POST'])
     def rate_movie(self, request, pk=None):
@@ -75,12 +82,22 @@ class MovieViewSet(viewsets.ModelViewSet):
                 rating.stars = stars
                 rating.save()
                 serializer = RatingSerializer(rating, many=False)
-                response = {'message': 'Rating updated', 'result': serializer.data}
+                response = {
+                    'message': 'Rating updated',
+                    'result': serializer.data
+                }
                 return Response(response, status=status.HTTP_200_OK)
             except Rating.DoesNotExist:
-                rating = Rating.objects.create(user=user, movie=movie, stars=stars)
+                rating = Rating.objects.create(
+                    user=user,
+                    movie=movie,
+                    stars=stars
+                )
                 serializer = RatingSerializer(rating, many=False)
-                response = {'message': 'Rating created', 'result': serializer.data}
+                response = {
+                    'message': 'Rating created',
+                    'result': serializer.data
+                }
                 return Response(response, status=status.HTTP_200_OK)
         else:
             response = {'message': 'You need to provide stars'}
