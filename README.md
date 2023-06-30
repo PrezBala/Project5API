@@ -4,8 +4,6 @@ The objective of this API is to serve as a robust backend mechanism for the Flic
 
 FlickRater API is the backend service used by the [Live link to the Repository](https://github.com/PrezBala/Project5FE)
 
-<hr>
-
 # Table of contents
 
 - [Development Goals](#development-goals)
@@ -26,7 +24,7 @@ FlickRater API is the backend service used by the [Live link to the Repository](
 
 # Development Goals
 
-Astro Community aims to unite space enthusiasts in a thriving online platform, fostering knowledge exchange, stimulating discussions, and encouraging the exploration of the wonders of the universe. My goal is to create an engaging, supportive space where members can connect, learn, and share their passion for the cosmos.
+The objective of this API is to function as a backend service, enabling the FlickRater frontend application to carry out Create, Read, Update, and Delete operations through its user interface.
 
 # Agile Planning
 
@@ -34,7 +32,7 @@ This project was developed following agile principles, with a series of four spr
 
 Our Kanban board, created using GitHub Projects, facilitated project management and can be accessed [here](https://github.com/users/PrezBala/projects/1/views/1). For more detailed information on each task, simply click on the respective view.
 
-![kanban](/static/assets/images/kanban.png)
+![kanban](readme/kanban.png) 
 
 The user stories were grouped into different Epics
 
@@ -143,8 +141,6 @@ User Stories
 Upon logging in, users can create their own posts using forms designed with Crispy Forms.
 
 The image below showcases the mobile view, illustrating how the forms adapt to a smaller screen, ensuring a user-friendly experience on mobile devices.
-
-<img src="https://github.com/PrezBala/project4/blob/main/static/assets/images/phonesize.png">
 
 # Deployment
 
