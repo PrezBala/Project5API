@@ -6,12 +6,20 @@ FlickRater API is the backend service used by the [Live link to the Repository](
 
 # Table of contents
 
+- [FlickRater API- Project 5](#flickrater-api--project-5)
+- [Table of contents](#table-of-contents)
 - [Development Goals](#development-goals)
 - [Agile Planning](#agile-planning)
-- [User-Experience-Design](#user-experience-design)
+  - [Epics](#epics)
+  - [Set Up](#set-up)
+  - [Movie Creation](#movie-creation)
+  - [Movie Description](#movie-description)
+  - [Custom Auth Token](#custom-auth-token)
+  - [Movie Rating](#movie-rating)
+- [User Stories](#user-stories)
   - [Site Goals](#site-goals)
-  - [Agile Planning](#agile-planning)
-  - [User Stories](#user-stories)
+  - [Agile Planning](#agile-planning-1)
+  - [User Stories](#user-stories-1)
 - [API Endpoints](#api-endpoints)
 - [Security](#security)
 - [Technologies](#technologies)
@@ -36,75 +44,54 @@ Our Kanban board, created using GitHub Projects, facilitated project management 
 
 The user stories were grouped into different Epics
 
-Epic 1 - Setup
+## Epics
 
-The initial step focused on establishing the foundational Django app, as it was crucial to complete this before progressing to other tasks. During this phase, the base HTML, header, and footer were created, and deployment was also addressed to prevent complications at a later stage.
+## Set Up
 
-Epic 1 user stories:
+This epic encompasses the crucial steps to get the Django application and Django REST Framework operational, creating a robust platform to start developing the features.
 
-As a developer, I need to set up the project to lay the groundwork for incorporating core features.
-As a developer, I want to create a base HTML page to maintain a consistent format across all pages.
-As a user, I want seamless navigation throughout the site on my mobile and tablet devices.
-As a site owner, I want to enable users to sign up for new accounts, fostering communication and interaction.
-As a developer, I want to ensure smooth deployment via Heroku / ElephantSQL to circumvent potential issues.
+## Movie Creation
 
-Epic 2 - Database Model and Admin
+This epic focuses on the establishment of API endpoints and database integrations to support CRUD operations for the creation of movie posts, forming the backbone of movie content in the application.
 
-The focus of this phase was to establish the database model and admin functions, which would allow the admin to approve or reject new posts. Additionally, the admin would have the ability to clsoe forum posts once the topic question was adequately addressed.
+## Movie Description
 
-Epic 2 User Stories:
+This epic is dedicated to designing and implementing API endpoints and database connections for the CRUD operations specifically related to the Movie description field, allowing for detailed storytelling and representation of each movie.
 
-As a developer, I want to create the foundation for the database, enabling users to update their posts by commenting below them.
-As a developer, I want to be able to delete comments / replies from all users within Front.
-As a user, I want the ability to remove my own comments,replies and edit my comments while ensuring that this action is limited exclusively to my own submissions.
-As a non-logged-in user, I want to browse ideas from other users, but I will need to log in to post my own.
+## Custom Auth Token
 
-Epic 3 - Login, Signup, and Logout Pages
+This epic targets the creation and handling of unique user tokens. It involves designing API endpoints and database interactions for CRUD operations of these tokens, providing a layer of security and personalization for each user in the system.
 
-Epic 3 User Stories:
+## Movie Rating
 
-As a new user, I want an easy and intuitive signup process.
-As a returning user, I want a straightforward login experience.
-As a user, I want to safely and easily log out of the site.
-As a developer I want to be able to access front and backend to edit,remove and delete posts.
-As a developer I want to ensure the users are not able to access backend system.
+This epic covers the design and development of a comprehensive movie rating system. It includes creating API endpoints and database connections that allow users to rate each movie, offering a user-driven evaluation of each movie listing.
 
-Epic 4 User Stories:
+# User Stories
 
-As a user, I want to effortlessly share my ideas by submitting them to the site.
-As a user, I want the ability to comment on and respond to other users' posts.
-As a user, I want to view the post count and points allocated by the admin for any user.
-As the site owner, I want to ensure only space-related topics are posted, requiring admin or delegated mod approval for each new post.
+By Epics
 
-Epic 5 - Styling
+Setup
 
-Epic 5 User Stories:
+As a developer, I need to create the base project set up so that I can build out the features.
 
-As a user, I want a clear and self-explanatory front page to confirm I am in the right place.
-As a developer, I want to implement a space-themed color scheme for the forum.
-As a developer, I want to feature a space-related video on the main page to captivate users.
-As a developer, I want to standardize the style of all forms and ensure they look good on various devices.
-As a developer, I want to have a well-organized table that enables me to efficiently view, edit, and approve user-generated posts.
+As a developer, I need to create the google cloud bucket and create the connection to the project so that static images can be uploaded by users.
 
---
+As a user I can create a new account so that I can access all the features for signed up users
 
-Epic 6 - Documentation
+Artists
 
-Epic 6 Tasks
+As a developer, I want to create api views for artists so that they are available to the front end
+Contact
 
-- Finalize Readme documentation.
-- Conduct comprehensive testing and provide a writeup.
+As a developer, I want to create a contact model and API view so that users can contact the site owner with issues
+Posts
 
-# User Experience Design
+As a user, I want to be able to view edit or delete a post
+As a user, I want to able to create a post and list posts
+Profiles
 
-- Implement responsive design.
-- Create a homepage featuring categories for various topics.
-- Create a admin dashboard only available to the administrator
-- Create a page for comments where users have the ability to edit their comments.
-- Provide a search field for users to locate specific topics.
-- Display user post count and a point system managed by the administrator.
-- Indicate engagement levels using images under each category, representing low engagement, popular topics, closed topics, etc.
-- Limit certain features for users who are not logged in.
+As a developer, I want to create a new blank profile with default image when a user is created.
+As a user, I want to able to get a list of profiles
 
 ## Site Goals
 
