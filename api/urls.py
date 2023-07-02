@@ -5,7 +5,6 @@ from .views import (
     MovieViewSet,
     RatingViewSet,
     UserViewSet,
-    AdminViewSet,
     CustomAuthToken,
 )
 
@@ -13,7 +12,6 @@ router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('movies', MovieViewSet)
 router.register('ratings', RatingViewSet)
-router.register('admin', AdminViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
