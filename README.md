@@ -37,7 +37,7 @@ The objective of this API is to function as a backend service, enabling the Flic
 
 This project was developed following agile principles, with a series of four sprints. Each feature was prioritized and labeled as either "must-have," "should-have," or "could-have." We began by implementing the must-have features, followed by the should-have features, and finally addressed the could-have features if time and resources permitted. This approach ensured the delivery of a comprehensive website, with optional enhancements added based on capacity.
 
-Our Kanban board, created using GitHub Projects, facilitated project management and can be accessed [here](https://github.com/users/PrezBala/projects/1/views/1). For more detailed information on each task, simply click on the respective view.
+The Kanban board, created using GitHub Projects, facilitated project management and can be accessed [here](https://github.com/users/PrezBala/projects/1/views/1). For more detailed information on each task, simply click on the respective view.
 
 ![kanban](readme/kanban.png)
 
@@ -119,12 +119,15 @@ Endpoint: /api/movies
 Methods:
 
 POST - Utilized for creating a Movie listing.
+
 GET - Utilized for retrieving a list of Movies.
 
 Methods:
 
 GET - Utilized for viewing a Movie.
+
 PUT - Utilized for updating a movie listing.
+
 DELETE - Utilized for removing a movie listing.
 
 User Story:
@@ -140,6 +143,7 @@ Endpoint: /api/ratings
 Methods:
 
 POST - Utilized for adding a new rating to a movie.
+
 GET - Utilized for obtaining a list of ratings for a movie.
 
 User Story:
@@ -153,6 +157,7 @@ Endpoint: /api/users
 Methods:
 
 POST - Utilized for creating a new user.
+
 GET - Utilized for retrieving a list of users and their respective staff ratings.
 
 # Security
@@ -237,7 +242,7 @@ I use this to allow my web app to serve its own static files, making it self-con
 
 # Testing
 
-During the development process, I used the Postman application to test the API endpoints using GET, POST, and DELETE functions with various URLs. Below are the results of the tests:
+During the development process, I used the Postman application to test the API endpoints using GET, POST,PUT and DELETE functions with various URLs. Below are the results of the tests:
 
 I tested the GET function for the API to verify that movies and ratings are returned correctly. The screenshot below shows the response:
 
