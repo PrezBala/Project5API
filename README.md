@@ -383,9 +383,15 @@ I used several YouTube videos as valuable resources to understand and plan out m
 
 freeCodeCamp.org - Building a REST API with Node.js, Express, and MongoDB
 
+[here](https://www.youtube.com/watch?v=WXsD0ZgxjRw).
+
 sudoCODE - Node.js REST API Tutorial
 
+[here](https://www.youtube.com/watch?v=aumDleTg_UQ&t=8s).
+
 Tech With Tim - Django REST Framework Tutorial
+
+[here](https://www.youtube.com/watch?v=dam0GPOAvVI&t=16s).
 
 In addition to these videos, I received excellent support from Studentsupport and Slack. Interacting with tutors, fellow students, and asking questions allowed me to overcome challenges and gain a better understanding of the concepts.
 
