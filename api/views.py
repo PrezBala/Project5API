@@ -31,7 +31,7 @@ class UserViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_200_OK)
         else:
             return Response(
-                {'error': 'Wrong Credentials'}, 
+                {'error': 'Wrong Credentials'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -57,7 +57,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def create(self, request, *args, **kwargs):
-        data = (request.data.dict() 
+        data = (request.data.dict()
                 if type(request.data) is not dict
                 else request.data)
         data['creator'] = request.user.id
