@@ -8,7 +8,8 @@ class AdminMiddleware:
 
     def __call__(self, request):
         if 'admin' in request.path:
-            if not request.user.is_authenticated or not request.user.is_superuser:
+            if not (request.user.is_authenticated
+                    or request.user.is_superuser):
                 return HttpResponseForbidden()
 
         return self.get_response(request)

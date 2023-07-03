@@ -164,6 +164,8 @@ GET - Utilized for retrieving a list of users and their respective staff ratings
 
 - A permission class, named 'class IsAdminUser(permissions.BasePermission)', was implemented to ensure that only administrators are granted access to the admin section and possess the rights to delete all movie listings, among other admin-exclusive functionalities.
 
+- I've implemented a middleware.py script within my API, designed to validate whether the user making the request is authenticated or possesses superuser status. Without these credentials, access to protected sections, such as the admin area, will be denied. Any attempt by a user to access the admin page without the proper credentials will result in them being redirected to the homepage.
+
 # Technologies
 
 - Django
