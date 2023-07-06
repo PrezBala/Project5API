@@ -292,6 +292,10 @@ One warning was raised about the env.py file being imported but unused. However,
 
 By addressing the identified issues and resolving them, I ensured that the code complied with the established coding conventions and best practices.
 
+Several 'spacing' and 'line too long' errors were detected within the virtual environment (venv) libraries. After consultation with both student support and my mentor, it was confirmed that these errors can be disregarded, as they do not originate from the code I have written.
+
+<img src="https://github.com/PrezBala/Project5API/blob/main/readme/testseventeen.png">
+
 # Deployment
 
 ## Version Control
