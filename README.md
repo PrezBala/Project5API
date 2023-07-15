@@ -2,7 +2,7 @@
 
 The objective of this API is to serve as a robust backend mechanism for the Flickrater frontend application. It is specifically designed to facilitate seamless Create, Read, Update, and Delete (CRUD) operations through the user interface. This structure empowers users to interact with the application effectively and efficiently.
 
-FlickRater API is the backend service used by the [Live link to the Repository](https://github.com/PrezBala/Project5FE)
+FlickRater API is the backend service used by the FlickRater FE Repository [Live link to the Repository](https://github.com/PrezBala/Project5FE)
 
 # Table of contents
 
