@@ -13,7 +13,7 @@ router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('movies', MovieViewSet)
 router.register('ratings', RatingViewSet)
-# router.register('admin', AdminViewSet)
+router.register('admin', AdminViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

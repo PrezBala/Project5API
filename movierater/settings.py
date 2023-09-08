@@ -62,19 +62,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN'),
-        "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
-    ]
-else:
-    CORS_ALLOWED_ORIGINS = [
-        "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
-    ]
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https://.*\.gitpod\.io$",
-    ]
+# Commenting out specific origins
+# if 'CLIENT_ORIGIN' in os.environ:
+#     CORS_ALLOWED_ORIGINS = [
+#         os.environ.get('CLIENT_ORIGIN'),
+#         "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
+#     ]
+# else:
+#     CORS_ALLOWED_ORIGINS = [
+#         "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
+#     ]
+#     CORS_ALLOWED_ORIGIN_REGEXES = [
+#         r"^https://.*\.gitpod\.io$",
+#     ]
 
 CORS_ALLOW_CREDENTIALS = True
 
