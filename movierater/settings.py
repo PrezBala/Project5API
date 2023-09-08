@@ -1,3 +1,4 @@
+
 """
 Django settings for movierater project.
 
@@ -27,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', 'project-5-movierater.herokuapp.com', 'localhost']
 
@@ -65,11 +66,11 @@ MIDDLEWARE = [
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN'),
-        "https://project-5-movierater-fe-80b23e401183.herokuapp.com/"
+        "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
     ]
 else:
     CORS_ALLOWED_ORIGINS = [
-        "https://project-5-movierater-fe-80b23e401183.herokuapp.com/"
+        "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
     ]
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https://.*\.gitpod\.io$",
