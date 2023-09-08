@@ -50,13 +50,6 @@ INSTALLED_APPS = [
     'cloudinary',
 ]
 
-JAZZMIN_SETTINGS = {
-    "title": "Administrator",
-    "site_title": "FLICKRATER API",
-    "site_header": "FLICKRATER",
-    "use_custom_theme": False,
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
