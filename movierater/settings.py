@@ -46,7 +46,16 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'api',
     'corsheaders',
+    'cloudinary_storage',
+    'cloudinary',
 ]
+
+JAZZMIN_SETTINGS = {
+    "title": "Administrator",
+    "site_title": "FLICKRATER API",
+    "site_header": "FLICKRATER",
+    "use_custom_theme": False,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,6 +67,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CLOUDINARY_STORAGE = {
+   'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+   'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+   'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+   'SECURE': True
+}
 
 
 CORS_ALLOWED_ORIGINS = [

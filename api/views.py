@@ -128,4 +128,4 @@ class AdminViewSet(viewsets.ModelViewSet):
 
 
 def welcome_view(request):
-    return HttpResponse("Welcome to Movie Rater API!")
+    return HttpResponse("Welcome to Flick Rater API!")
