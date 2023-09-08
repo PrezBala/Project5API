@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.http import HttpResponse
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer, UserSerializer
 from .permissions import IsAdminUser
@@ -124,3 +125,7 @@ class AdminViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
     authentication_classes = (TokenAuthentication, )
     permission_classes = (IsAdminUser,)
+
+
+def welcome_view(request):
+    return HttpResponse("Welcome to Movie Rater API!")
