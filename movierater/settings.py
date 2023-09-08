@@ -69,14 +69,18 @@ CLOUDINARY_STORAGE = {
 }
 
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
 CORS_ALLOWED_ORIGINS = [
     "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    client_origin = os.environ.get('CLIENT_ORIGIN')
-    if client_origin not in CORS_ALLOWED_ORIGINS:
-        CORS_ALLOWED_ORIGINS.append(client_origin)
 
 
 CORS_ALLOW_CREDENTIALS = True
