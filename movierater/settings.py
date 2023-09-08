@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', 'project-5-movierater.herokuapp.com', 'localhost']
 
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'api.middleware.AdminMiddleware',
+    'api.middleware.AdminMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -64,16 +64,16 @@ MIDDLEWARE = [
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
+        os.environ.get('CLIENT_ORIGIN'),
+        "https://project-5-movierater-fe-80b23e401183.herokuapp.com/"
     ]
 else:
+    CORS_ALLOWED_ORIGINS = [
+        "https://project-5-movierater-fe-80b23e401183.herokuapp.com/"
+    ]
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https://.*\.gitpod\.io$",
     ]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://project-5-movierater-fe-80b23e401183.herokuapp.com/"
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
