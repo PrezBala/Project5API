@@ -61,13 +61,15 @@ MIDDLEWARE = [
 ]
 
 
+CORS_ALLOWED_ORIGINS = [
+    "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
+]
+
 if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [os.environ.get('CLIENT_ORIGIN') ]
+    client_origin = os.environ.get('CLIENT_ORIGIN')
+    if client_origin not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append(client_origin)
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^([^.]+)', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-
-    CORS_ALLOWED_ORIGIN_REGEXES = [rf"{extracted_url}.(eu|us)\d+\.codeanyapp\.com$", ]
 
 CORS_ALLOW_CREDENTIALS = True
 
