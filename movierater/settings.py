@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-prezbala-project5api-g8tw0q6j1r.us2.codeanyapp.com', 'project-5-movierater.herokuapp.com', 'localhost']
 
@@ -60,13 +60,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CLOUDINARY_STORAGE = {
-   'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-   'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-   'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-   'SECURE': True
-}
 
 CORS_ALLOWED_ORIGINS = [
     "https://project-5-movierater-fe-80b23e401183.herokuapp.com"
